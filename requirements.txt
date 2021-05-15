@@ -56,7 +56,7 @@ pyzmq==19.0.2
 QDarkStyle==2.8.1
 QtAwesome==0.7.2
 QtPy==1.9.0
-sip==4.19.13
+sip==5.0.0
 six==1.15.0
 snowballstemmer==2.0.0
 sortedcontainers==2.2.2
