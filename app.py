@@ -183,9 +183,9 @@ def index():
 @app.route('/after', methods=['GET','POST'])
 def after():
     file= request.files['file1']
-    file.save('C:/Users/rode/Desktop/Projects/IC_app/Flickr8k_Dataset/Flicker8k_Dataset/file.jpg')
+    file.save('app/Flickr8k_Dataset/Flicker8k_Dataset/file.jpg')
 
-    filename = "C:/Users/rode/Desktop/Projects/IC_app/Flickr8k.token.txt"
+    filename = "app/Flickr8k.token.txt"
     # load descriptions
     doc = load_doc(filename)
     # print(doc[:300])
@@ -202,15 +202,15 @@ def after():
 
     save_descriptions(descriptions, 'descriptions.txt')
 
-    filename = 'C:/Users/rode/Desktop/Projects/IC_app/Flickr_8k.trainImages.txt'
+    filename = 'app/Flickr_8k.trainImages.txt'
     train = load_set(filename)
     # Below path contains all the images
-    images = 'C:/Users/rode/Desktop/Projects/IC_app/Flickr8k_Dataset/Flicker8k_Dataset/'
+    images = 'app/Flickr8k_Dataset/Flicker8k_Dataset/'
     # Create a list of all image names in the directory
     img = glob.glob(images + '*.jpg')
 
     # Below file conatains the names of images to be used in test data
-    test_images_file = 'C:/Users/rode/Desktop/Projects/IC_app/Flickr_8k.testImages.txt'
+    test_images_file = 'app/Flickr_8k.testImages.txt'
     # Read the validation image names in a set# Read the test image names in a set
     test_images = set(open(test_images_file, 'r').read().strip().split('\n'))
 
@@ -241,7 +241,7 @@ def after():
         encoding_test[img[len(images):]] = encode(img)
 
     # Save the bottleneck test features to disk
-    with open("C:/Users/rode/Desktop/Projects/IC_app/encoded_.pkl", "wb") as encoded_pickle:
+    with open("app/encoded_.pkl", "wb") as encoded_pickle:
         pickle.dump(encoding_test, encoded_pickle)
 
     # Create a list of all the training captions
@@ -319,7 +319,7 @@ def after():
         final = ' '.join(final)
         return final
 
-    glove_dir = 'C:/Users/rode/Desktop/Projects/IC_app/glove/'
+    glove_dir = 'app/glove/'
     embeddings_index = {} # empty dictionary
     f = open(os.path.join(glove_dir, 'glove.6B.200d.txt'), encoding="utf-8")
 
@@ -357,8 +357,8 @@ def after():
     model.layers[2].set_weights([embedding_matrix])
     model.layers[2].trainable = False
     model.load_weights('./model_9.h5')
-    images = 'C:/Users/rode/Desktop/Projects/IC_app/Flickr8k_Dataset/Flicker8k_Dataset/'
-    with open("C:/Users/rode/Desktop/Projects/IC_app/encoded_.pkl", "rb") as encoded_pickle:
+    images = 'app/Flickr8k_Dataset/Flicker8k_Dataset/'
+    with open("app/encoded_.pkl", "rb") as encoded_pickle:
         encoding_test = load(encoded_pickle)
 
 
