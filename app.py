@@ -183,7 +183,7 @@ def index():
 @app.route('/after', methods=['GET','POST'])
 def after():
     file= request.files['file1']
-    file.save('tmp/file.jpg')
+    file.save('/tmp/file.jpg')
 
     filename = "app/Flickr8k.token.txt"
     # load descriptions
@@ -205,7 +205,7 @@ def after():
     filename = 'app/Flickr_8k.trainImages.txt'
     train = load_set(filename)
     # Below path contains all the images
-    images = 'tmp/'
+    images = '/tmp/'
     # Create a list of all image names in the directory
     img = glob.glob(images + '*.jpg')
 
@@ -357,7 +357,7 @@ def after():
     model.layers[2].set_weights([embedding_matrix])
     model.layers[2].trainable = False
     model.load_weights('./model_9.h5')
-    images = 'tmp/'
+    images = '/tmp/'
     with open("app/encoded_.pkl", "rb") as encoded_pickle:
         encoding_test = load(encoded_pickle)
 
