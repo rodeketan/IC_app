@@ -26,7 +26,7 @@ from keras import optimizers
 from keras.applications.inception_v3 import preprocess_input
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from keras.utils import to_categorical
+from tensorflow.keras.utils import to_categorical
 
 
 def load_doc(filename):
